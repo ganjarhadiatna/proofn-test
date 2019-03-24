@@ -46,7 +46,7 @@
 			<div class="app-top">
 				<!-- I think it must be changed -->
 				<p class="a-t-title">
-					Life Advice Looking Through A Window
+					{{ $titleMessage }}
 				</p>
 			</div>
 

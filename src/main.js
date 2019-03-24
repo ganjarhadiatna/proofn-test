@@ -8,6 +8,8 @@ import underscore from 'vue-underscore'
 Vue.config.productionTip = false
 Vue.use(underscore)
 
+Vue.prototype.$titleMessage = 'Message'
+
 Vue.prototype.$dataBase = [
   {
     'id': '0',
