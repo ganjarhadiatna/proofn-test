@@ -4,10 +4,10 @@
 		<div class="app-background-chat">
 
 			<div 
-				v-for="(item, index) in message[$route.params.id].content" 
+				v-for="(item, index) in $dataBase[$route.params.id].subject[$route.params.idsubject].message" 
 				:key="index">
 
-				<div v-if="$route.params.idsubject == item.idsubject">
+				<div>
 
 					<!-- left -->
 					<div v-if="item.type == 'other'">
@@ -67,12 +67,13 @@
 		</div>
 
 		<div class="app-chat">
-			<form action="#" method="post">
+			<form v-on:submit.prevent="doChat($route.params.id, $route.params.idsubject)">
 				<div class="a-c-form">
 					<input 
 						type="text" 
 						class="txt txt-main-color" 
 						placeholder="Write message..."
+						v-model="txtChat"
 						required>
 					<button 
 						type="submit"
@@ -89,297 +90,25 @@
 export default {
 	data () {
 		return {
-			message: [
-				{},
-
-				// 1
-				{
-					'content': [
-						{
-							'idmessage': '2',
-							'idsubject': '1',
-							'name': 'Stella Wilson',
-							'foto': 'https://i.kinja-img.com/gawker-media/image/upload/s--Tg_qqR3r--/c_scale,f_auto,fl_progressive,q_80,w_800/dnmtn4ksijwyep0xmljk.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'If you had thought \
-									about the possibility of carrying around a virtually \
-									unlimited supply of music ten years ago, it would \
-									have seemed a bit futuristic, but it has all happened, \
-									and now all we have to do when we get tired of our \
-									present music collection is download free song for Ipod.'
-						},
-						{
-							'idmessage': '3',
-							'idsubject': '1',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it, \
-									and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '2',
-							'idsubject': '2',
-							'name': 'Stella Wilson',
-							'foto': 'https://i.kinja-img.com/gawker-media/image/upload/s--Tg_qqR3r--/c_scale,f_auto,fl_progressive,q_80,w_800/dnmtn4ksijwyep0xmljk.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'If you had thought \
-									about the possibility of carrying around a virtually \
-									unlimited supply of music ten years ago.'
-						},
-						{
-							'idmessage': '3',
-							'idsubject': '2',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it'
-						},
-						{
-							'idmessage': '3',
-							'idsubject': '2',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '1',
-							'idsubject': '3',
-							'name': 'Stella Wilson',
-							'foto': 'https://i.kinja-img.com/gawker-media/image/upload/s--Tg_qqR3r--/c_scale,f_auto,fl_progressive,q_80,w_800/dnmtn4ksijwyep0xmljk.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it, \
-									and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-					]
-				},
-
-				// 2
-				{
-					'content': [
-						{
-							'idmessage': '1',
-							'idsubject': '1',
-							'name': 'Cameron Webster',
-							'foto': 'https://data.whicdn.com/images/202324958/large.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it, \
-									and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '2',
-							'idsubject': '1',
-							'name': 'Cameron Webster',
-							'foto': 'https://data.whicdn.com/images/202324958/large.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'If you had thought \
-									about the possibility of carrying around a virtually \
-									unlimited supply of music ten years ago, it would \
-									have seemed a bit futuristic, but it has all happened, \
-									and now all we have to do when we get tired of our \
-									present music collection is download free song for Ipod.'
-						},
-						{
-							'idmessage': '3',
-							'idsubject': '1',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it'
-						},
-						{
-							'idmessage': '4',
-							'idsubject': '2',
-							'name': 'Cameron Webster',
-							'foto': 'https://data.whicdn.com/images/202324958/large.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'If you had thought \
-									about the possibility of carrying around a virtually \
-									unlimited supply of music ten years ago, it would \
-									have seemed a bit futuristic, but it has all happened, \
-									and now all we have to do when we get tired of our \
-									present music collection is download free song for Ipod.'
-						}
-					]
-				},
-
-				// 3
-				{
-					'content': [
-						{
-							'idmessage': '1',
-							'idsubject': '1',
-							'name': 'Liyod Horton',
-							'foto': 'https://www.hengeler.com/fileadmin/_processed_/4/5/csm_WirbelBernd_Port-013_a514a51d9f.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it, \
-									and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '2',
-							'idsubject': '1',
-							'name': 'Liyod Horton',
-							'foto': 'https://www.hengeler.com/fileadmin/_processed_/4/5/csm_WirbelBernd_Port-013_a514a51d9f.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'If you had thought \
-									about the possibility of carrying around a virtually \
-									unlimited supply of music ten years ago, it would \
-									have seemed a bit futuristic, but it has all happened, \
-									and now all we have to do when we get tired of our \
-									present music collection is download free song for Ipod.'
-						},
-						{
-							'idmessage': '3',
-							'idsubject': '1',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it'
-						},
-						{
-							'idmessage': '4',
-							'idsubject': '1',
-							'name': 'Liyod Horton',
-							'foto': 'https://www.hengeler.com/fileadmin/_processed_/4/5/csm_WirbelBernd_Port-013_a514a51d9f.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '5',
-							'idsubject': '1',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Ofcourse.'
-						}
-					]
-				},
-
-				// 4
-				{
-					'content': [
-						{
-							'idmessage': '1',
-							'idsubject': '1',
-							'name': 'Lois Webster',
-							'foto': 'https://www.hengeler.com/fileadmin/_processed_/f/c/csm_GardemannStella-2795_b489585686.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it, \
-									and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '2',
-							'idsubject': '1',
-							'name': 'Lois Webster',
-							'foto': 'https://www.hengeler.com/fileadmin/_processed_/f/c/csm_GardemannStella-2795_b489585686.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'If you had thought \
-									about the possibility of carrying around a virtually \
-									unlimited supply of music ten years ago, it would \
-									have seemed a bit futuristic, but it has all happened, \
-									and now all we have to do when we get tired of our \
-									present music collection is download free song for Ipod.'
-						},
-						{
-							'idmessage': '3',
-							'idsubject': '1',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it, \
-									and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '4',
-							'idsubject': '1',
-							'name': 'Lois Webster',
-							'foto': 'https://www.hengeler.com/fileadmin/_processed_/f/c/csm_GardemannStella-2795_b489585686.jpg',
-							'date': '00:39 AM',
-							'type': 'other',
-							'body': 'An Ipod can easily \
-									become a vital part of your life.'
-						},
-						{
-							'idmessage': '5',
-							'idsubject': '1',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Ofcourse.'
-						},
-						{
-							'idmessage': '6',
-							'idsubject': '1',
-							'name': 'You (Bondan)',
-							'date': '00:39 AM',
-							'type': 'me',
-							'body': 'Do you want to download free song for ipod? If so, \
-									reading this article could save you from getting \
-									in to a lot of trouble! Downloading music to your \
-									Ipod has more than one pitfall associated with it, \
-									and this article will tell you the best way to \
-									download free song for Ipod. An Ipod can easily \
-									become a vital part of your life.'
-						},
-					]
-				},
-
-			],
+			txtChat: '',
 		}
-	}
+	},
+	methods: {
+		doChat (id, idsubject) {
+			var temp = {
+				'idmessage': '4',
+				'idsubject': idsubject,
+				'name': 'You (Bondan)',
+				'date': '00:39 AM',
+				'type': 'me',
+				'body': this.txtChat
+			};
+
+			this.$dataBase[this.$route.params.id].subject[this.$route.params.idsubject].message.push(temp);
+			this.txtChat = '';
+			// console.log(temp);
+			
+		}
+	},
 }
 </script>

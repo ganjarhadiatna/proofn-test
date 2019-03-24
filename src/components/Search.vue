@@ -20,6 +20,7 @@
 		</div>
 
 		<div v-for="(item, index) in object" :key="index">
+
 			<router-link :to="{name: 'message', params: {'id': item.id}}">
 				
 				<div v-if="item.id == $route.params.id" :class="'card-chat active'">
@@ -103,8 +104,11 @@ export default {
 	data () {
 		return {
 			txtSearch: '',
-			object: this.$dataBase,
+			object: [],
 		}
+	},
+	created: function () {
+		this.doResult(this.$route.params.ctr.replace('+', ' '));
 	},
 	methods: {
 		doResult (txt) {
@@ -124,28 +128,19 @@ export default {
 			
 
 			if (cek) {
-				this.object = this.$dataBase[idx];
+				this.object.push(this.$dataBase[idx]);
 				console.log('ditemukan');
-				this.$router.push({
-				    name: 'message',
-				    params: {
-				        id: this.object.id,
-				    }
-				});
 			} else {
-				alert('pencarian tidak ditemukan');
+				console.log('tidak ditemukan');
 			}
 		},
 		doSearch () {
-
-			this.doResult(this.txtSearch.toLowerCase());
-
-			// this.$router.push({
-            //     name: 'search',
-            //     params: {
-            //         ctr: this.txtSearch.toLowerCase().replace(/ /g, '+'),
-            //     }
-            // });
+			this.$router.push({
+                name: 'search',
+                params: {
+                    ctr: this.txtSearch.toLowerCase().replace(/ /g, '+'),
+                }
+			});
 			
 		}
 	},

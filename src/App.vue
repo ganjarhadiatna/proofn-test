@@ -36,25 +36,7 @@
 			
 			<div class="app-list-chat">
 
-				<div class="app-search">
-					<form action="#" method="get">
-						<div class="a-s-form">
-							<button 
-								type="submit"
-								class="btn btn-sekunder-color btn-no-border">
-								<i class="fa fa-lg fa-search"></i>
-							</button>
-							<input 
-								type="search" 
-								class="txt txt-main-color" 
-								placeholder="Search Proofn"
-								required>
-						</div>
-					</form>
-				</div>
-
-				<router-view name="person" />
-
+				<router-view name="person" :key="$route.fullPath" />
 
 			</div>
 
