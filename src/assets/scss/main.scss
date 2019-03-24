@@ -11,13 +11,15 @@
 @import 'navigator';
 @import 'form';
 @import 'card';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Rubik');
 
 * {
     padding: 0;
     margin: 0;
     border: 0;
     outline: 0;
-    font-family: $font;
+    font-family: 'Open Sans', 'Rubik', $font;
 }
 
 a {
@@ -64,7 +66,7 @@ a {
         .a-t-title {
             @include post_top(relative);
             font-size: 11pt;
-            font-weight: 600;
+            font-weight: 500;
             color: $txt-84-color;
         }
         .a-t-btn {
@@ -95,7 +97,7 @@ a {
         background-color: #f5f6fb;
         background-position: center;
         background-repeat: repeat;
-        background-image: url('../img/bg-chat.png');
+        background-image: url('https://i.pinimg.com/564x/05/77/0e/05770ecdcc4d802447f57e77bebd7df6.jpg');
     }
 
     .app-list-object {

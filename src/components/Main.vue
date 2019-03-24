@@ -21,7 +21,9 @@
 		</div>
 		<div class="a-col-2">
 			<div class="app-top">
-				<p class="a-t-title">Inbox</p>
+				<p class="a-t-title">
+					Inbox {{ persons[0].emails[0] }}
+				</p>
 			</div>
 			
 			<div class="app-list-chat">
@@ -43,7 +45,40 @@
 					</form>
 				</div>
 
-				<div class="card-chat theme-2">
+				<div v-for="(item, index) in persons" :key="index">
+					<div :class="'card-chat ' + item.status">
+						<div class="c-c-col-1">
+							<div class="image image-50px image-circle"></div>
+						</div>
+						<div class="c-c-col-2">
+							<div class="c-c-top">
+								<div class="c-c-name">
+									<div class="txt-site txt-11 txt-bold txt-main margin-bottom-5px">
+										{{ item.name }}
+									</div>
+								</div>
+								<div class="c-c-date">
+									12:08 PM
+								</div>
+							</div>
+							<div class="c-c-mid">
+								<div class="c-c-info">
+									<div class="txt-site txt-10 txt-main">
+										Life Advice Looking Through...
+									</div>
+									<div class="txt-site txt-9 txt-sekunder">
+										Sony laptops are among the
+									</div>
+								</div>
+								<div class="c-c-status">
+									<div class="ttl">1</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="card-chat theme-2">
 					<div class="c-c-col-1">
 						<div class="image image-50px image-circle"></div>
 					</div>
@@ -105,7 +140,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 			</div>
 		</div>
@@ -267,4 +302,53 @@
 		</div>
 	</div>
 </template>
-
+<script>
+export default {
+	data () {
+		return {
+			persons: [
+				{
+					'id': '1',
+					'name': 'Stella Wilson',
+					'status': 'read',
+					'emails': [
+						{
+							'idemails': '1',
+							'content': {
+								'idcontent': '1',
+								'title': 'judul',
+								'Subject': 'Subject',
+								'body': 'body',
+							}
+						},
+						{
+							'idemails': '1',
+							'content': {
+								'idcontent': '1',
+								'title': 'judul',
+								'Subject': 'Subject',
+								'body': 'body',
+							}
+						}
+					]
+				},
+				{
+					'id': '2',
+					'name': 'Stella Wilson 2',
+					'status': 'unread',
+				},
+				{
+					'id': '3',
+					'name': 'Stella Wilson 3',
+					'status': 'unread',
+				},
+				{
+					'id': '4',
+					'name': 'Stella Wilson 4',
+					'status': 'unread',
+				}
+			],
+		}
+	}
+}
+</script>

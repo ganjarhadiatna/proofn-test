@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Rubik");
 @font-face {
   font-family: "FontFirst";
   src: url("../fonts/Open_Sans/OpenSans-Regular.ttf"); }
@@ -1421,21 +1423,34 @@
   -ms-grid-columns: 50px 1fr;
   grid-gap: 15px;
   -ms-grid-gap: 15px; }
-  .card-chat.theme-1 .c-c-top .c-c-name {
-    color: rgba(0, 0, 0, 0.84); }
-  .card-chat.theme-1 .c-c-top .c-c-date {
-    color: rgba(0, 0, 0, 0.54); }
-  .card-chat.theme-2 {
-    background-color: #ebebeb; }
-    .card-chat.theme-2 .c-c-top .c-c-name {
+  .card-chat:hover {
+    background-color: #ebebeb;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease; }
+    .card-chat:hover .c-c-top .c-c-name {
       color: rgba(0, 0, 0, 0.84); }
-    .card-chat.theme-2 .c-c-top .c-c-date {
+    .card-chat:hover .c-c-top .c-c-date {
       color: rgba(0, 0, 0, 0.54); }
-  .card-chat.theme-3 .c-c-top .c-c-name {
+  .card-chat.read .c-c-top .c-c-name {
     color: rgba(0, 0, 0, 0.84); }
-  .card-chat.theme-3 .c-c-top .c-c-date {
+  .card-chat.read .c-c-top .c-c-date {
+    color: rgba(0, 0, 0, 0.54); }
+  .card-chat.active {
+    background-color: #ebebeb; }
+    .card-chat.active .c-c-top .c-c-name {
+      color: rgba(0, 0, 0, 0.84); }
+    .card-chat.active .c-c-top .c-c-date {
+      color: rgba(0, 0, 0, 0.54); }
+    .card-chat.active .c-c-mid .c-c-status .ttl {
+      display: none; }
+  .card-chat.unread .c-c-top .c-c-name {
+    color: rgba(0, 0, 0, 0.84); }
+  .card-chat.unread .c-c-top .c-c-date {
     color: #ff711c; }
-  .card-chat.theme-3 .c-c-mid .c-c-status .ttl {
+  .card-chat.unread .c-c-mid .c-c-status .ttl {
     display: block; }
   .card-chat .c-c-col-1 {
     grid-column: 1;
@@ -1517,11 +1532,11 @@
       color: #fff; }
     .card-object:hover .ttl {
       display: none; }
-  .card-object.theme-1 {
+  .card-object.active {
     background-color: #ff711c; }
-    .card-object.theme-1 .txt-site {
+    .card-object.active .txt-site {
       color: #fff; }
-    .card-object.theme-1 .ttl {
+    .card-object.active .ttl {
       display: none; }
   .card-object .ttl {
     position: relative;
@@ -1601,7 +1616,7 @@
   margin: 0;
   border: 0;
   outline: 0;
-  font-family: "FontFirst", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif; }
+  font-family: "Open Sans", "Rubik", "FontFirst", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif; }
 
 a {
   text-decoration: none; }
@@ -1655,7 +1670,7 @@ a {
       -o-transform: translate(0, -50%);
       transform: translate(0, -50%);
       font-size: 11pt;
-      font-weight: 600;
+      font-weight: 500;
       color: rgba(0, 0, 0, 0.84); }
     .app .app-top .a-t-btn {
       position: relative;
@@ -1685,7 +1700,7 @@ a {
     background-color: #f5f6fb;
     background-position: center;
     background-repeat: repeat;
-    background-image: url("../img/bg-chat.png"); }
+    background-image: url("https://i.pinimg.com/564x/05/77/0e/05770ecdcc4d802447f57e77bebd7df6.jpg"); }
   .app .app-list-object {
     position: relative;
     width: 100%;

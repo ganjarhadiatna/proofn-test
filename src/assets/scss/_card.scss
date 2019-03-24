@@ -6,7 +6,9 @@
     border-bottom: $border;
     @include grid_2x(50px, 1fr);
     @include grid_gap(15px);
-    &.theme-1 {
+    &:hover {
+        background-color: #ebebeb;
+        @include animate_1();
         .c-c-top {
             .c-c-name {
                 color: $txt-84-color;
@@ -16,7 +18,17 @@
             }
         }
     }
-    &.theme-2 {
+    &.read {
+        .c-c-top {
+            .c-c-name {
+                color: $txt-84-color;
+            }
+            .c-c-date {
+                color: $txt-54-color;
+            }
+        }
+    }
+    &.active {
         background-color: #ebebeb;
         .c-c-top {
             .c-c-name {
@@ -26,8 +38,15 @@
                 color: $txt-54-color;
             }
         }
+        .c-c-mid {
+            .c-c-status {
+                .ttl {
+                    display: none;
+                }
+            }
+        }
     }
-    &.theme-3 {
+    &.unread {
         .c-c-top {
             .c-c-name {
                 color: $txt-84-color;
@@ -113,7 +132,7 @@
         }
     }
 
-    &.theme-1 {
+    &.active {
         background-color: $min-color;
         .txt-site {
             color: #fff;
